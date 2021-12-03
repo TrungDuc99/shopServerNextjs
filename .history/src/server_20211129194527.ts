@@ -3,7 +3,6 @@ import connectDatabase from './utils/connectDatabase'
 import cors from 'cors'
 import morgan from 'morgan'
 import path from 'path'
-
 // import redis from 'redis'
 import { CategoryRouter, ProductRouter, UserRouter } from './routes'
 import UserCallback from './controller/Product'
@@ -17,7 +16,6 @@ type Query {
 },
 type Mutation {
   createProduct(name: String!, price:String!,description:String! ): Product
-  updateProduct(name: String!, price:String!,description:String! ): Product
 }
 type Product {
 
@@ -28,8 +26,7 @@ description:String
 `)
 var root = {
   product: UserCallback.getGraphQL,
-  createProduct: UserCallback.createGraphQL,
-  updateProduct: UserCallback.updateGraphQL,
+  // createProduct:  ProductCallback.createGraphQL
 }
 
 require('dotenv').config()

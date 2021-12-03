@@ -21,7 +21,7 @@ export default class UserCallback {
     try {
       console.log(params)
       const { id } = params
-      const payload = await ProductModel.findOneAndUpdate({ _id: id }, params)
+      const payload = await ProductModel.findOneAndUpdate(params)
 
       return payload
     } catch (err) {

@@ -19,13 +19,11 @@ export default class UserCallback {
 
   static async updateGraphQL(params: any) {
     try {
-      console.log(params)
       const { id } = params
-      const payload = await ProductModel.findOneAndUpdate({ _id: id }, params)
+      const payload = await ProductModel.findOneAndUpdate({ _id: id })
 
       return payload
     } catch (err) {
-      console.log(err)
       return false
     }
   }

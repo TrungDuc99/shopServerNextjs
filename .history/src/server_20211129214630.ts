@@ -16,8 +16,8 @@ type Query {
   product(id: String!): Product
 },
 type Mutation {
-  createProduct(name: String!, price:String!,description:String! ): Product
-  updateProduct(name: String!, price:String!,description:String! ): Product
+  createProduct(name: String!, price:String!,description:String!,:String! ): Product
+  updateProduct(name: String!, price:String!,description:String! ,description:String!,image:String!): Product
 }
 type Product {
 
@@ -29,7 +29,7 @@ description:String
 var root = {
   product: UserCallback.getGraphQL,
   createProduct: UserCallback.createGraphQL,
-  updateProduct: UserCallback.updateGraphQL,
+  // updateProduct: UserCallback.updateGraphQL,
 }
 
 require('dotenv').config()

@@ -3,12 +3,10 @@ import connectDatabase from './utils/connectDatabase'
 import cors from 'cors'
 import morgan from 'morgan'
 import path from 'path'
-
 // import redis from 'redis'
 import { CategoryRouter, ProductRouter, UserRouter } from './routes'
-import UserCallback from './controller/Product'
 const bodyParser = require('body-parser')
-const { graphqlHTTP } = require('express-graphql')
+const { graphlHTTP } = require('express-graphql')
 var { buildSchema } = require('graphql')
 
 var schema = buildSchema(`
@@ -17,7 +15,6 @@ type Query {
 },
 type Mutation {
   createProduct(name: String!, price:String!,description:String! ): Product
-  updateProduct(name: String!, price:String!,description:String! ): Product
 }
 type Product {
 
@@ -27,9 +24,8 @@ description:String
 }
 `)
 var root = {
-  product: UserCallback.getGraphQL,
-  createProduct: UserCallback.createGraphQL,
-  updateProduct: UserCallback.updateGraphQL,
+  product: ProductCallback.getGraphQL,
+  // createProduct:  ProductCallback.createGraphQL
 }
 
 require('dotenv').config()
@@ -53,9 +49,9 @@ app.listen(PORT, () => {
   console.log('Server is running at port:', PORT)
 })
 
-app.use(
+app.product(
   '/graphql',
-  graphqlHTTP({
+  graphlHTTP({
     schema: schema,
     rootValue: root,
     graphiql: true,
