@@ -32,25 +32,27 @@ export default class UserCallback {
 
   static async getGraphQL(params: any) {
     try {
+      console.log(params)
+
       const { id } = params
       const payload = await ProductModel.findOne({ _id: id })
+      console.log(payload)
 
       return payload
     } catch (err) {
       return false
     }
   }
-  static async getAllProductGraphQL(params: any, res: Response) {
-    console.log('AAAAAAAAA')
-    try {
-      const payload = await ProductModel.find()
-      console.log(payload)
+  // static async getAllProductGraphQL(params: any, res: Response) {
+  //   try {
+  //     const payload = await ProductModel.find()
+  //     console.log(payload)
 
-      return res.json({ success: true, data: payload })
-    } catch (err) {
-      return false
-    }
-  }
+  //     return res.json({ success: true, data: payload })
+  //   } catch (err) {
+  //     return false
+  //   }
+  // }
 
   static async get(req: Request, res: Response) {
     try {

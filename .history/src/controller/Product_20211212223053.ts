@@ -32,8 +32,11 @@ export default class UserCallback {
 
   static async getGraphQL(params: any) {
     try {
+      console.log(params)
+
       const { id } = params
       const payload = await ProductModel.findOne({ _id: id })
+      console.log(payload)
 
       return payload
     } catch (err) {
@@ -41,7 +44,6 @@ export default class UserCallback {
     }
   }
   static async getAllProductGraphQL(params: any, res: Response) {
-    console.log('AAAAAAAAA')
     try {
       const payload = await ProductModel.find()
       console.log(payload)

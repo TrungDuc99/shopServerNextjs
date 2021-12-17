@@ -25,9 +25,6 @@ type Product {
 name: String
 price:String
 description:String
-image:String
-isActive:Boolean
-
 }
 `)
 var root = {

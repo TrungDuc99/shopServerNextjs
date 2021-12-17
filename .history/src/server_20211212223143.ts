@@ -14,27 +14,26 @@ var { buildSchema } = require('graphql')
 var schema = buildSchema(`
 type Query {
   product(id: String!): Product
-  getAllProducts: Product
 },
-
+type QueryAllProducts {
+  getAllProductGraphQL: Product
+},
 type Mutation {
   createProduct(name: String!, price:String!,description:String! ): Product
   updateProduct(name: String!, price:String!,description:String! ): Product
 }
 type Product {
-name: String
+
+  name: String
 price:String
 description:String
-image:String
-isActive:Boolean
-
 }
 `)
 var root = {
   product: UserCallback.getGraphQL,
   createProduct: UserCallback.createGraphQL,
   updateProduct: UserCallback.updateGraphQL,
-  getAllProducts: UserCallback.getAllProductGraphQL,
+  getAllProductGraphQL: UserCallback.getAllProductGraphQL,
 }
 
 require('dotenv').config()

@@ -27,7 +27,7 @@ price:String
 description:String
 image:String
 isActive:Boolean
-
+price:String
 }
 `)
 var root = {

@@ -1,10 +1,57 @@
 import { Request, Response } from 'express'
-import { ProductModel } from '../models'
+import { ProductModel, UserModel } from '../models'
 require('dotenv').config()
 
 const secretKey: any = process.env.TOKEN_SECRET_KEY
 
 export default class UserCallback {
+  static async createGraphQL(params: any) {
+    try {
+      console.log(params)
+
+      const payload = await ProductModel.create(params)
+      return payload
+    } catch (err) {
+      console.log(err)
+      return false
+    }
+  }
+
+  static async updateGraphQL(params: any) {
+    try {
+      console.log(params)
+      const { id } = params
+      const payload = await ProductModel.findOneAndUpdate({ _id: id }, params)
+
+      return payload
+    } catch (err) {
+      console.log(err)
+      return false
+    }
+  }
+
+  static async getGraphQL(params: any) {
+    try {
+      const { id } = params
+      const payload = await ProductModel.findOne({ _id: id })
+
+      return payload
+    } catch (err) {
+      return false
+    }
+  }
+  static async getAllProductGraphQL(params: any, res: Response) {
+    console.log('AAAAAAAAA')
+    try {
+      const payload = await ProductModel.find()
+      console.log(payload)
+
+      return res.json({ success: true, data: payload })
+    } catch (err) {
+      return false
+    }
+  }
+
   static async get(req: Request, res: Response) {
     try {
       const payload = await ProductModel.find()

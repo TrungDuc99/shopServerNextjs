@@ -26,7 +26,6 @@ name: String
 price:String
 description:String
 image:String
-isActive:Boolean
 
 }
 `)

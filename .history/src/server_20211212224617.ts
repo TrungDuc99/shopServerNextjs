@@ -13,10 +13,13 @@ var { buildSchema } = require('graphql')
 
 var schema = buildSchema(`
 type Query {
-  product(id: String!): Product
-  getAllProducts: Product
+  product(id: String!): Product,
+  getAllProducts: Products
 },
-
+type Query {
+ 
+  getAllProducts: AllProducts
+},
 type Mutation {
   createProduct(name: String!, price:String!,description:String! ): Product
   updateProduct(name: String!, price:String!,description:String! ): Product
@@ -25,9 +28,6 @@ type Product {
 name: String
 price:String
 description:String
-image:String
-isActive:Boolean
-
 }
 `)
 var root = {

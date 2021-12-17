@@ -32,6 +32,8 @@ export default class UserCallback {
 
   static async getGraphQL(params: any) {
     try {
+      console.log(params)
+
       const { id } = params
       const payload = await ProductModel.findOne({ _id: id })
 
