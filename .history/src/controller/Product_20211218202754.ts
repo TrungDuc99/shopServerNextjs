@@ -41,6 +41,7 @@ export default class UserCallback {
     }
   }
   static async getAllProductGraphQL(params: any, res: Response) {
+    console.log('AAAAAAAAA')
     try {
       const payload = await ProductModel.find()
       console.log(payload)
@@ -63,7 +64,7 @@ export default class UserCallback {
     try {
       const productID = req.params.id
       const payload = await ProductModel.findOne({ _id: productID })
-      return res.json({ success: true, data: payload })
+      return { success: true, data: payload }
     } catch (err) {
       res.status(500).json({ error: err })
     }

@@ -62,8 +62,10 @@ export default class UserCallback {
   static async getOnlyProduct(req: Request, res: Response) {
     try {
       const productID = req.params.id
+      console.log(productID)
+
       const payload = await ProductModel.findOne({ _id: productID })
-      return res.json({ success: true, data: payload })
+      return { success: true, data: payload }
     } catch (err) {
       res.status(500).json({ error: err })
     }
