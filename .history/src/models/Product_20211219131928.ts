@@ -11,6 +11,7 @@ export interface ProductDoc extends Document {
   isActive: boolean
   price: string
   create_date: string
+  category: string
 }
 
 const ProductSchema = new Schema<ProductDoc>({
