@@ -7,6 +7,7 @@ import path from 'path'
 // import redis from 'redis'
 import { CategoryRouter, ProductRouter, UserRouter } from './routes'
 import UserCallback from './controller/Product'
+import { UserModel } from './models'
 const bodyParser = require('body-parser')
 const { graphqlHTTP } = require('express-graphql')
 var { buildSchema } = require('graphql')
@@ -56,7 +57,17 @@ app.use('/api/category', CategoryRouter)
 app.listen(PORT, () => {
   console.log('Server is running at port:', PORT)
 })
-
+const createInitUser = async () => {
+  const user = await UserModel.create({
+    email: 'trungduc@gmail.com',
+    name: 'trungduc',
+    password: 'trungduc',
+    phone: 'trungduc',
+    address: 'trungduc',
+  })
+  console.log('created')
+}
+createInitUser()
 app.use(
   '/graphql',
   graphqlHTTP({
