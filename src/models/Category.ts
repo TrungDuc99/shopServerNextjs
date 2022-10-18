@@ -6,7 +6,7 @@ require('dotenv').config()
 export interface CategoryDoc extends Document {
   id: string
   nameCategory: string
-  description: String
+  description: string
   image: string
 }
 

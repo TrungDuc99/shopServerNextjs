@@ -20,6 +20,7 @@ const ProductSchema = new Schema<ProductDoc>({
   image: defaultType.string,
   isActive: defaultType.boolean,
   price: defaultType.string,
+  category: defaultType.string,
   create_date: defaultType.string,
 })
 
