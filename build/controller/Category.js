@@ -64,14 +64,15 @@ var UserCallback = /** @class */ (function () {
     };
     UserCallback.create = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, nameCategory, description, image, payload, err_2;
+            var _a, name, description, image, id, payload, err_2;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, nameCategory = _a.nameCategory, description = _a.description, image = _a.image;
+                        _a = req.body, name = _a.name, description = _a.description, image = _a.image, id = _a.id;
                         return [4 /*yield*/, models_1.CategoryModel.create({
-                                nameCategory: nameCategory,
+                                name: name,
+                                id: id,
                                 description: description,
                                 image: image,
                             })];
@@ -89,14 +90,17 @@ var UserCallback = /** @class */ (function () {
     };
     UserCallback.update = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, nameCategory, description, image, payload, err_3;
+            var _id, _a, name, description, category, image, id, payload, err_3;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        id = req.params.id;
-                        _a = req.body, nameCategory = _a.nameCategory, description = _a.description, image = _a.image;
-                        return [4 /*yield*/, models_1.CategoryModel.findOneAndUpdate({ _id: id }, { nameCategory: nameCategory, description: description, image: image })];
+                        console.log('adasdqwe');
+                        _id = req.params._id;
+                        _a = req.body, name = _a.name, description = _a.description, category = _a.category, image = _a.image, id = _a.id;
+                        console.log('adasdqwe');
+                        console.log(id, 'asdas');
+                        return [4 /*yield*/, models_1.CategoryModel.findOneAndUpdate({ _id: _id }, { name: name, description: description, category: category, image: image, id: id })];
                     case 1:
                         payload = _b.sent();
                         return [2 /*return*/, res.json({ success: true, data: payload })];

@@ -57,17 +57,17 @@ app.use('/api/category', CategoryRouter)
 app.listen(PORT, () => {
   console.log('Server is running at port:', PORT)
 })
-const createInitUser = async () => {
-  const user = await UserModel.create({
-    email: 'trungduc@gmail.com',
-    name: 'trungduc',
-    password: 'trungduc',
-    phone: 'trungduc',
-    address: 'trungduc',
-  })
-  console.log('created')
-}
-createInitUser()
+// const createInitUser = async () => {
+//   const user = await UserModel.create({
+//     email: 'trungduc@gmail.com',
+//     name: 'trungduc',
+//     password: 'trungduc',
+//     phone: 'trungduc',
+//     address: 'trungduc',
+//   })
+//   console.log('created')
+// }
+// createInitUser()
 app.use(
   '/graphql',
   graphqlHTTP({

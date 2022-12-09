@@ -16,14 +16,14 @@ export default class UserCallback {
 
   static async create(req: Request, res: Response) {
     try {
-      const { nameCategory, description, image } = req.body
+      const { name, description, image, id } = req.body
 
       const payload = await CategoryModel.create({
-        nameCategory,
+        name,
+        id,
         description,
         image,
       })
-
       return res.json({ success: true, data: payload })
     } catch (err) {
       res.status(500).json({ error: err })
@@ -32,12 +32,15 @@ export default class UserCallback {
 
   static async update(req: Request, res: Response) {
     try {
-      const { id } = req.params
-      const { nameCategory, description, image } = req.body
+      const { _id } = req.params
+      const { name, description, category, image, id } = req.body
+
+      console.log('====================================')
+      console.log(_id, name, id)
 
       const payload = await CategoryModel.findOneAndUpdate(
-        { _id: id },
-        { nameCategory, description, image }
+        { _id: _id },
+        { name, description, category, image, id }
       )
 
       return res.json({ success: true, data: payload })

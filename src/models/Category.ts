@@ -5,14 +5,14 @@ require('dotenv').config()
 
 export interface CategoryDoc extends Document {
   id: string
-  nameCategory: string
+  name: string
   description: string
   image: string
 }
 
 const CategorySchema = new Schema<CategoryDoc>({
   id: defaultType.string,
-  nameCategory: defaultType.string,
+  name: defaultType.string,
   description: defaultType.string,
   image: defaultType.string,
 })
