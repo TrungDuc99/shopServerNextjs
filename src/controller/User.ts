@@ -13,7 +13,15 @@ export default class UserCallback {
       res.status(500).json({ error: err })
     }
   }
-
+  static async getOne(req: Request, res: Response) {
+    try {
+      const userID = req.params.id
+      const payload = await UserModel.findOne({ _id: userID })
+      return res.json({ success: true, data: payload })
+    } catch (err) {
+      res.status(500).json({ error: err })
+    }
+  }
   static async create(req: Request, res: Response) {
     try {
       const { email, name, password, phone, address } = req.body

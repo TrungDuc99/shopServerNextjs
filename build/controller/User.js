@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -62,9 +62,30 @@ var UserCallback = /** @class */ (function () {
             });
         });
     };
+    UserCallback.getOne = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var userID, payload, err_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        userID = req.params.id;
+                        return [4 /*yield*/, models_1.UserModel.findOne({ _id: userID })];
+                    case 1:
+                        payload = _a.sent();
+                        return [2 /*return*/, res.json({ success: true, data: payload })];
+                    case 2:
+                        err_2 = _a.sent();
+                        res.status(500).json({ error: err_2 });
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     UserCallback.create = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, email, name, password, phone, address, payload, err_2;
+            var _a, email, name, password, phone, address, payload, err_3;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -81,8 +102,8 @@ var UserCallback = /** @class */ (function () {
                         payload = _b.sent();
                         return [2 /*return*/, res.json({ success: true, data: payload })];
                     case 2:
-                        err_2 = _b.sent();
-                        res.status(500).json({ error: err_2 });
+                        err_3 = _b.sent();
+                        res.status(500).json({ error: err_3 });
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -91,7 +112,7 @@ var UserCallback = /** @class */ (function () {
     };
     UserCallback.update = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, name, password, phone, address, payload, err_3;
+            var id, _a, name, password, phone, address, payload, err_4;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -103,8 +124,8 @@ var UserCallback = /** @class */ (function () {
                         payload = _b.sent();
                         return [2 /*return*/, res.json({ success: true, data: payload })];
                     case 2:
-                        err_3 = _b.sent();
-                        res.status(500).json({ error: err_3 });
+                        err_4 = _b.sent();
+                        res.status(500).json({ error: err_4 });
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -113,7 +134,7 @@ var UserCallback = /** @class */ (function () {
     };
     UserCallback.delete = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var userID, payload, err_4;
+            var userID, payload, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -124,8 +145,8 @@ var UserCallback = /** @class */ (function () {
                         payload = _a.sent();
                         return [2 /*return*/, { success: true, data: payload }];
                     case 2:
-                        err_4 = _a.sent();
-                        res.status(500).json({ error: err_4 });
+                        err_5 = _a.sent();
+                        res.status(500).json({ error: err_5 });
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
